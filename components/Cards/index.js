@@ -24,31 +24,14 @@ const articleEntry = document.querySelector('.cards-container');
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(response => {
         console.log(response);
-        response.data.articles['javascript'].forEach((topic => {
+        for(const prop in response.data.articles) {
+            response.data.articles[prop].forEach((topic => {
     
                 const newArticle = createCard(topic.headline, topic.authorPhoto, topic.authorName);
                 articleEntry.appendChild(newArticle);
-            }))
-            response.data.articles['bootstrap'].forEach((topic => {
-    
-                const newArticle = createCard(topic.headline, topic.authorPhoto, topic.authorName);
-                articleEntry.appendChild(newArticle);
-            }))
-            response.data.articles['technology'].forEach((topic => {
-    
-                const newArticle = createCard(topic.headline, topic.authorPhoto, topic.authorName);
-                articleEntry.appendChild(newArticle);
-            }))
-            response.data.articles['jquery'].forEach((topic => {
-    
-                const newArticle = createCard(topic.headline, topic.authorPhoto, topic.authorName);
-                articleEntry.appendChild(newArticle);
-            }))
-            response.data.articles['node'].forEach((topic => {
-    
-                const newArticle = createCard(topic.headline, topic.authorPhoto, topic.authorName);
-                articleEntry.appendChild(newArticle);
-            }))
+            }))   
+        }
+        
         })
     .catch(error => {
         console.log("The data was not returned", error);
