@@ -29,7 +29,7 @@ function Header() {
 
     return newHeader
 }
-console.log(Header);
+
 const headerFunction = document.querySelector('.header-container');
-console.log(headerFunction);
+
 headerFunction.appendChild(Header());
